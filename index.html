@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="zh-TW" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>歷史的迴響：臺灣白色恐怖時期</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        retroBg: '#F5F2EB',       /* 復古米色背景 */
+                        retroCard: '#EAE5D9',     /* 卡片米灰色 */
+                        darkGreen: '#1E3329',     /* 沉穩墨綠色 */
+                        deepGreen: '#13221A',     /* 更深墨綠色 */
+                        accentRed: '#A63A2F',     /* 歷史朱紅色 */
+                        accentRedHover: '#8A2F25',/* 朱紅懸停 */
+                        textDark: '#2C2B2A',      /* 墨黑內文 */
+                        textMuted: '#6B6862'      /* 灰色輔助文字 */
+                    },
+                    fontFamily: {
+                        serif: ['"Noto Serif TC"', 'serif'],
+                        sans: ['"Noto Sans TC"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Google Fonts: Noto Serif TC & Noto Sans TC -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <!-- FontAwesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Anime.js CDN -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <style>
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: #F5F2EB;
+            color: #2C2B2A;
+        }
+        h1, h2, h3, h4, .serif-title {
+            font-family: 'Noto Serif TC', serif;
+        }
+        /* 自訂捲軸 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #EAE5D9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1E3329;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-retroBg text-textDark selection:bg-accentRed selection:text-white">
+
+    <!-- 1. 導覽列 (Navbar) -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-darkGreen/95 backdrop-blur-md text-retroBg border-b border-retroCard/20 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="#hero" class="flex items-center space-x-3 group">
+                <div class="w-10 h-10 rounded bg-accentRed flex items-center justify-center text-white font-serif font-bold text-lg shadow-md group-hover:scale-105 transition-transform">
+                    臺
+                </div>
+                <div>
+                    <span class="font-serif text-lg tracking-wider font-bold block">歷史的迴響</span>
+                    <span class="text-xs text-retroCard/70 tracking-widest uppercase">White Terror Taiwan</span>
+                </div>
+            </a>
+            <!-- 桌面版選單 -->
+            <nav class="hidden lg:flex items-center space-x-6 text-sm font-medium tracking-wide">
+                <a href="#background" class="hover:text-accentRed transition-colors">背景介紹</a>
+                <a href="#origins" class="hover:text-accentRed transition-colors">事件始末</a>
+                <a href="#figures" class="hover:text-accentRed transition-colors">關鍵人物</a>
+                <a href="#timeline" class="hover:text-accentRed transition-colors">互動時間軸</a>
+                <a href="#map-sites" class="hover:text-accentRed transition-colors">不義遺址</a>
+                <a href="#epilogue" class="hover:text-accentRed transition-colors">平反與省思</a>
+                <a href="#reading" class="hover:text-accentRed transition-colors">延伸閱讀</a>
+            </nav>
+            <!-- 手機版選單按鈕 -->
+            <button id="mobile-menu-btn" class="lg:hidden text-retroBg focus:outline-none p-2" aria-label="切換選單">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+        <!-- 手機版下拉選單 -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-deepGreen border-t border-retroCard/10 px-4 py-4 space-y-3">
+            <a href="#background" class="mobile-link block py-2 hover:text-accentRed transition-colors border-b border-white/5">背景介紹</a>
+            <a href="#origins" class="mobile-link block py-2 hover:text-accentRed transition-colors border-b border-white/5">事件始末</a>
+            <a href="#figures" class="mobile-link block py-2 hover:text-accentRed transition-colors border-b border-white/5">關鍵人物</a>
+            <a href="#timeline" class="mobile-link block py-2 hover:text-accentRed transition-colors border-b border-white/5">互動時間軸</a>
+            <a href="#map-sites" class="mobile-link block py-2 hover:text-accentRed transition-colors border-b border-white/5">不義遺址</a>
+            <a href="#epilogue" class="mobile-link block py-2 hover:text-accentRed transition-colors border-b border-white/5">平反與省思</a>
+            <a href="#reading" class="mobile-link block py-2 hover:text-accentRed transition-colors">延伸閱讀</a>
+        </div>
+    </header>
+
+    <!-- 2. 首頁 (Hero Section) -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center bg-deepGreen text-retroBg px-4 pt-20 overflow-hidden">
+        <!-- 裝飾性背景格紋與光影 -->
+        <div class="absolute inset-0 opacity-10 bg-[radial-gradient(#A63A2F_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
+        <div class="absolute -top-40 -right-40 w-96 h-96 bg-accentRed/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div class="max-w-4xl mx-auto text-center relative z-10 hero-content">
+            <div class="inline-flex items-center space-x-2 bg-accentRed/20 border border-accentRed/40 text-retroBg px-4 py-1.5 rounded-full text-sm mb-6 tracking-widest uppercase">
+                <span class="w-2 h-2 rounded-full bg-accentRed animate-ping"></span>
+                <span>台灣人權歷史紀念專題</span>
+            </div>
+            <h1 class="font-serif text-4xl sm:text-6xl lg:text-7xl font-black tracking-tight mb-6 leading-tight text-retroBg">
+                歷史的迴響：<br><span class="text-accentRed">臺灣白色恐怖時期</span>
+            </h1>
+            <p class="text-base sm:text-xl text-retroCard/80 max-w-2xl mx-auto font-light leading-relaxed mb-10">
+                1949年至1992年，一段歷時四十餘年、噤若寒蟬的威權統治歲月。無數自由靈魂與知識菁英在時代的風暴中殞落，留給後世對民主與人權最深刻的反思。
+            </p>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#background" class="w-full sm:w-auto px-8 py-4 bg-accentRed hover:bg-accentRedHover text-white rounded font-medium shadow-lg hover:shadow-accentRed/30 transition-all transform hover:-translate-y-0.5 text-center">
+                    開始探索歷史 <i class="fa-solid fa-arrow-down ml-2"></i>
+                </a>
+                <a href="#timeline" class="w-full sm:w-auto px-8 py-4 bg-transparent border border-retroCard/30 hover:border-retroBg text-retroBg rounded font-medium transition-all text-center">
+                    直接檢視時間軸
+                </a>
+            </div>
+        </div>
+        <!-- 底部向下捲動提示 -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-retroCard/50 text-center animate-bounce hidden sm:block">
+            <span class="text-xs uppercase tracking-widest block mb-1">向下捲動</span>
+            <i class="fa-solid fa-chevron-down text-sm"></i>
+        </div>
+    </section>
+
+    <!-- 3. 背景介紹 (Background) -->
+    <section id="background" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16 section-header">
+            <span class="text-accentRed font-semibold tracking-widest text-sm uppercase block mb-2">Historical Context</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-darkGreen mb-4">時代背景與法制架構</h2>
+            <div class="w-16 h-1 bg-accentRed mx-auto mb-6"></div>
+            <p class="text-textMuted text-base sm:text-lg">
+                統治當局透過嚴密的戒嚴令與特殊法律，建構出龐大的特務監控與軍法審判體系，全面壓制政治異議。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- 卡片 1 -->
+            <div class="bg-retroCard/60 border border-darkGreen/10 p-8 rounded-lg shadow-sm hover:shadow-md transition-all group hover:-translate-y-1">
+                <div class="w-12 h-12 bg-darkGreen text-retroBg rounded flex items-center justify-center text-xl mb-6 group-hover:bg-accentRed transition-colors">
+                    <i class="fa-solid fa-calendar-days"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-darkGreen mb-3">時間範圍</h3>
+                <p class="text-textMuted text-sm leading-relaxed">
+                    自 1949 年 5 月 20 日全境戒嚴開始，歷經 1987 年解嚴，至 1991 年《懲治叛亂條例》廢除與動員戡亂時期終止，共約四十餘年。
+                </p>
+            </div>
+            <!-- 卡片 2 -->
+            <div class="bg-retroCard/60 border border-darkGreen/10 p-8 rounded-lg shadow-sm hover:shadow-md transition-all group hover:-translate-y-1">
+                <div class="w-12 h-12 bg-darkGreen text-retroBg rounded flex items-center justify-center text-xl mb-6 group-hover:bg-accentRed transition-colors">
+                    <i class="fa-solid fa-scale-balanced"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-darkGreen mb-3">法制與工具</h3>
+                <p class="text-textMuted text-sm leading-relaxed">
+                    透過《動員戡亂時期臨時條款》、戒嚴令、《懲治叛亂條例》及《肅清匪諜條例》等特大法律架構，賦予情治機關無上權力。
+                </p>
+            </div>
+            <!-- 卡片 3 -->
+            <div class="bg-retroCard/60 border border-darkGreen/10 p-8 rounded-lg shadow-sm hover:shadow-md transition-all group hover:-translate-y-1">
+                <div class="w-12 h-12 bg-darkGreen text-retroBg rounded flex items-center justify-center text-xl mb-6 group-hover:bg-accentRed transition-colors">
+                    <i class="fa-solid fa-users"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-darkGreen mb-3">主要對象</h3>
+                <p class="text-textMuted text-sm leading-relaxed">
+                    針對被指控為共產黨員、親共人士、或主張民主、臺灣獨立、批評國民黨政權的知識分子、民眾與社會各界菁英。
+                </p>
+            </div>
+            <!-- 卡片 4 -->
+            <div class="bg-retroCard/60 border border-darkGreen/10 p-8 rounded-lg shadow-sm hover:shadow-md transition-all group hover:-translate-y-1">
+                <div class="w-12 h-12 bg-darkGreen text-retroBg rounded flex items-center justify-center text-xl mb-6 group-hover:bg-accentRed transition-colors">
+                    <i class="fa-solid fa-gavel"></i>
+                </div>
+                <h3 class="font-serif text-xl font-bold text-darkGreen mb-3">司法與審判</h3>
+                <p class="text-textMuted text-sm leading-relaxed">
+                    多數案件由非獨立的軍事法庭進行秘密審判，常有冤獄、株連、沒收財產甚至判處死刑的狀況，人權保障蕩然無存。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. 發生了甚麼 / 事件始末與原因 (Origins & Events) -->
+    <section id="origins" class="py-24 bg-retroCard/40 border-y border-darkGreen/10 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-accentRed font-semibold tracking-widest text-sm uppercase block mb-2">Origins & Tragedy</span>
+                    <h2 class="font-serif text-3xl sm:text-4xl font-bold text-darkGreen mb-6 leading-tight">
+                        為什麼發生？<br>席捲全臺的政治風暴
+                    </h2>
+                    <p class="text-textDark/80 leading-relaxed mb-6">
+                        二次大戰後，國民政府退守臺灣。面對國共內戰失利的危機感以及對社會內部不滿情緒的恐懼，政權以「防範共產黨滲透」與「保衛國家安全」為由，建立起高度集權的威權體制。
+                    </p>
+                    <p class="text-textDark/80 leading-relaxed mb-6">
+                        在「寧可錯殺一百，絕不放過一個」的高壓氛圍下，任何言論自由、集會結社、甚至單純的讀書會與耳語，都可能被羅織成「知匪不報」或「叛亂罪」。
+                    </p>
+                    <div class="border-l-4 border-accentRed pl-4 py-2 italic text-darkGreen font-serif bg-retroBg/60">
+                        「威權統治下，沉默成為生存的本能，而猜忌與告密則侵蝕了社會最基本的信任。」
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                    <div class="bg-retroBg p-6 rounded-lg border border-darkGreen/10 shadow-sm">
+                        <div class="text-accentRed font-serif font-bold text-3xl mb-2">01</div>
+                        <h4 class="font-serif text-lg font-bold text-darkGreen mb-2">知識分子的浩劫</h4>
+                        <p class="text-textMuted text-sm leading-relaxed">
+                            大批優秀學者、作家、記者與教師因思想左傾或批評時政遭到整肅，臺灣本土文化與現代思潮受到嚴重壓制與斷層。
+                        </p>
+                    </div>
+                    <div class="bg-retroBg p-6 rounded-lg border border-darkGreen/10 shadow-sm sm:translate-y-6">
+                        <div class="text-accentRed font-serif font-bold text-3xl mb-2">02</div>
+                        <h4 class="font-serif text-lg font-bold text-darkGreen mb-2">情治與秘密逮捕</h4>
+                        <p class="text-textMuted text-sm leading-relaxed">
+                            警備總部與保密局等情治單位享有特權，深夜突襲搜查、無票拘提、刑求逼供層出不窮，許多人在人間蒸發後音訊全無。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 關鍵人物 (Key Figures) -->
+    <section id="figures" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-accentRed font-semibold tracking-widest text-sm uppercase block mb-2">Key Figures & Victims</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-darkGreen mb-4">時代浪潮下的關鍵人物</h2>
+            <div class="w-16 h-1 bg-accentRed mx-auto mb-6"></div>
+            <p class="text-textMuted text-base sm:text-lg">
+                點擊下方人物卡片，探索在黑暗時代中堅持思想、爭取民主或不幸受難的代表性人物生平。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- 人物 1: 雷震 -->
+            <div class="figure-card bg-retroCard/60 border border-darkGreen/10 rounded-lg p-6 flex flex-col justify-between hover:border-accentRed/50 transition-all cursor-pointer group" onclick="openFigureModal('雷震', '自由中國發起人', '雷震曾任國民黨中央委員、蔣介石之親信，但隨後轉向自由主義，於1960年與臺籍人士籌組「中國民主黨」，批評時政、反對蔣介石三連任。同年9月遭情治機關逮捕，以「知匪不報」、「包庇匪諜」罪名判刑10年，史稱「雷震事件」。出獄後仍受嚴密監控直到逝世。', 'https://placehold.co/400x400/1E3329/F5F2EB?text=Lei+Zhen')">
+                <div>
+                    <div class="w-20 h-20 rounded-full bg-darkGreen text-retroBg mx-auto flex items-center justify-center font-serif text-2xl font-bold mb-4 group-hover:bg-accentRed transition-colors shadow">
+                        雷
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-darkGreen text-center mb-1">雷 震</h3>
+                    <p class="text-accentRed text-xs text-center font-medium uppercase tracking-wider mb-4">自由中國與組黨先驅</p>
+                    <p class="text-textMuted text-sm line-clamp-3 leading-relaxed">
+                        創辦《自由中國》雜誌，力倡民主憲政、言論自由與反對黨籌組，因而遭政權整肅入獄十年。
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-darkGreen/10 text-center">
+                    <span class="text-xs font-semibold text-darkGreen group-hover:text-accentRed transition-colors">查看詳細生平 <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </div>
+            </div>
+
+            <!-- 人物 2: 殷海光 -->
+            <div class="figure-card bg-retroCard/60 border border-darkGreen/10 rounded-lg p-6 flex flex-col justify-between hover:border-accentRed/50 transition-all cursor-pointer group" onclick="openFigureModal('殷海光', '自由主義啟蒙大師', '殷海光為臺灣戰後自由主義的代表人物，長期在《自由中國》發表社論，抨擊極權主義與黨化教育，啟發無數青年學子。雷震案後，《自由中國》遭查禁，殷海光遭受長期言論封殺、學校解聘與特務跟監，於1969年因胃癌病逝，抑鬱而終。', 'https://placehold.co/400x400/1E3329/F5F2EB?text=Yin+Haiguang')">
+                <div>
+                    <div class="w-20 h-20 rounded-full bg-darkGreen text-retroBg mx-auto flex items-center justify-center font-serif text-2xl font-bold mb-4 group-hover:bg-accentRed transition-colors shadow">
+                        殷
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-darkGreen text-center mb-1">殷海光</h3>
+                    <p class="text-accentRed text-xs text-center font-medium uppercase tracking-wider mb-4">自由主義思想啟蒙</p>
+                    <p class="text-textMuted text-sm line-clamp-3 leading-relaxed">
+                        臺大哲學系教授，以邏輯實證論與自由主義思想針砭時政，一生遭政治迫害、教授職位遭剝奪。
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-darkGreen/10 text-center">
+                    <span class="text-xs font-semibold text-darkGreen group-hover:text-accentRed transition-colors">查看詳細生平 <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </div>
+            </div>
+
+            <!-- 人物 3: 柏楊 -->
+            <div class="figure-card bg-retroCard/60 border border-darkGreen/10 rounded-lg p-6 flex flex-col justify-between hover:border-accentRed/50 transition-all cursor-pointer group" onclick="openFigureModal('柏楊', '作家與人權鬥士', '柏楊本名郭衣洞，為知名作家與政論家。1968年因在《中華日報》翻譯美國漫畫《大力水手》時，內容涉及諷刺獨裁政權父子交接政權，遭情治單位羅織「以漫畫宣傳共匪統治」與「叛國」罪名逮捕，在綠島度過近十年的牢獄之災，出獄後持續推動人權。', 'https://placehold.co/400x400/1E3329/F5F2EB?text=Bo+Yang')">
+                <div>
+                    <div class="w-20 h-20 rounded-full bg-darkGreen text-retroBg mx-auto flex items-center justify-center font-serif text-2xl font-bold mb-4 group-hover:bg-accentRed transition-colors shadow">
+                        柏
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-darkGreen text-center mb-1">柏 楊</h3>
+                    <p class="text-accentRed text-xs text-center font-medium uppercase tracking-wider mb-4">筆墨招禍的文學家</p>
+                    <p class="text-textMuted text-sm line-clamp-3 leading-relaxed">
+                        因翻譯美國漫畫遭誣陷判刑入獄9年餘，在綠島監獄期間寫下多部著作，晚年致力於人權與歷史反思。
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-darkGreen/10 text-center">
+                    <span class="text-xs font-semibold text-darkGreen group-hover:text-accentRed transition-colors">查看詳細生平 <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </div>
+            </div>
+
+            <!-- 人物 4: 陳映真 -->
+            <div class="figure-card bg-retroCard/60 border border-darkGreen/10 rounded-lg p-6 flex flex-col justify-between hover:border-accentRed/50 transition-all cursor-pointer group" onclick="openFigureModal('陳映真', '文學家與左翼思想者', '陳映真為臺灣戰後重要的鄉土與左翼小說家。1968年因組織「民主台灣同盟」案被捕，判刑10年，在臺東綠島服刑。出獄後繼續文學創作，主辦《人間》雜誌，關注勞工與弱勢群體。其一生思想左傾，經歷白色恐怖的洗禮與時代巨變。', 'https://placehold.co/400x400/1E3329/F5F2EB?text=Chen+Yingzhen')">
+                <div>
+                    <div class="w-20 h-20 rounded-full bg-darkGreen text-retroBg mx-auto flex items-center justify-center font-serif text-2xl font-bold mb-4 group-hover:bg-accentRed transition-colors shadow">
+                        陳
+                    </div>
+                    <h3 class="font-serif text-xl font-bold text-darkGreen text-center mb-1">陳映真</h3>
+                    <p class="text-accentRed text-xs text-center font-medium uppercase tracking-wider mb-4">左翼文學與人道關懷</p>
+                    <p class="text-textMuted text-sm line-clamp-3 leading-relaxed">
+                        著名作家，因涉及政治讀書會案被判刑10年，出獄後創辦《人間》雜誌，展現深厚的人道與社會關懷。
+                    </p>
+                </div>
+                <div class="mt-6 pt-4 border-t border-darkGreen/10 text-center">
+                    <span class="text-xs font-semibold text-darkGreen group-hover:text-accentRed transition-colors">查看詳細生平 <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. 互動時間軸 (Interactive Timeline) -->
+    <section id="timeline" class="py-24 bg-deepGreen text-retroBg px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-accentRed font-semibold tracking-widest text-sm uppercase block mb-2">Historical Timeline</span>
+                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-retroBg mb-4">歷史關鍵時刻</h2>
+                <div class="w-16 h-1 bg-accentRed mx-auto mb-6"></div>
+                <p class="text-retroCard/80 text-base sm:text-lg">
+                    從 1949 年戒嚴令頒布，到 1991 年惡法廢除，見證臺灣走向民主與轉型正義的漫長軌跡。
+                </p>
+            </div>
+
+            <!-- 時間軸容器 -->
+            <div class="relative border-l-2 border-accentRed/60 ml-4 sm:ml-32 space-y-12">
+                
+                <!-- 時間點 1 -->
+                <div class="relative pl-8 sm:pl-12 group timeline-item">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentRed border-4 border-deepGreen group-hover:scale-125 transition-transform"></div>
+                    <div class="sm:absolute sm:-left-32 sm:top-1 sm:text-right sm:w-24 text-accentRed font-serif font-bold text-lg">1949 年</div>
+                    <div class="bg-retroCard/10 border border-retroCard/20 p-6 rounded-lg backdrop-blur-sm">
+                        <h3 class="font-serif text-xl font-bold text-retroBg mb-2">全臺戒嚴與《懲治叛亂條例》</h3>
+                        <p class="text-retroCard/80 text-sm leading-relaxed">
+                            5月20日，臺灣省警備總司令部頒布戒嚴令；隨後頒布《懲治叛亂條例》與《動員戡亂時期臨時條款》，開啟長達數十年的白色恐怖體制。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 時間點 2 -->
+                <div class="relative pl-8 sm:pl-12 group timeline-item">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentRed border-4 border-deepGreen group-hover:scale-125 transition-transform"></div>
+                    <div class="sm:absolute sm:-left-32 sm:top-1 sm:text-right sm:w-24 text-accentRed font-serif font-bold text-lg">1950 年代</div>
+                    <div class="bg-retroCard/10 border border-retroCard/20 p-6 rounded-lg backdrop-blur-sm">
+                        <h3 class="font-serif text-xl font-bold text-retroBg mb-2">肅清匪諜與綠島監獄設立</h3>
+                        <p class="text-retroCard/80 text-sm leading-relaxed">
+                            大規模搜捕共產黨地下組織及異議人士，臺東火燒島（今綠島）設立新生訓導處與硬漢營，關押大批政治犯進行思想改造。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 時間點 3 -->
+                <div class="relative pl-8 sm:pl-12 group timeline-item">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentRed border-4 border-deepGreen group-hover:scale-125 transition-transform"></div>
+                    <div class="sm:absolute sm:-left-32 sm:top-1 sm:text-right sm:w-24 text-accentRed font-serif font-bold text-lg">1960 - 1970</div>
+                    <div class="bg-retroCard/10 border border-retroCard/20 p-6 rounded-lg backdrop-blur-sm">
+                        <h3 class="font-serif text-xl font-bold text-retroBg mb-2">自由中國案與黨外民主運動萌芽</h3>
+                        <p class="text-retroCard/80 text-sm leading-relaxed">
+                            雷震案引發知識分子對民主憲政的強烈聲援；進入70年代，保釣運動、鄉土文學論戰及黨外力量崛起，衝撞威權體制。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 時間點 4 -->
+                <div class="relative pl-8 sm:pl-12 group timeline-item">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentRed border-4 border-deepGreen group-hover:scale-125 transition-transform"></div>
+                    <div class="sm:absolute sm:-left-32 sm:top-1 sm:text-right sm:w-24 text-accentRed font-serif font-bold text-lg">1979 年</div>
+                    <div class="bg-retroCard/10 border border-retroCard/20 p-6 rounded-lg backdrop-blur-sm">
+                        <h3 class="font-serif text-xl font-bold text-retroBg mb-2">美麗島事件（高雄事件）</h3>
+                        <p class="text-retroCard/80 text-sm leading-relaxed">
+                            12月10日世界人權日，美麗島雜誌社於高雄舉辦遊行爆發衝突，隨後黨外領導階層遭全面大逮捕並進行公開軍法大審，成為臺灣民主化的轉折點。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 時間點 5 -->
+                <div class="relative pl-8 sm:pl-12 group timeline-item">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentRed border-4 border-deepGreen group-hover:scale-125 transition-transform"></div>
+                    <div class="sm:absolute sm:-left-32 sm:top-1 sm:text-right sm:w-24 text-accentRed font-serif font-bold text-lg">1987 年</div>
+                    <div class="bg-retroCard/10 border border-retroCard/20 p-6 rounded-lg backdrop-blur-sm">
+                        <h3 class="font-serif text-xl font-bold text-retroBg mb-2">宣佈解嚴與解除黨禁報禁</h3>
+                        <p class="text-retroCard/80 text-sm leading-relaxed">
+                            7月15日，蔣經國總統宣告臺灣解除戒嚴令，並解除黨禁、報禁，結束了長達38年的戒嚴統治，社會言論與集會空間大幅擴展。
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 時間點 6 -->
+                <div class="relative pl-8 sm:pl-12 group timeline-item">
+                    <div class="absolute -left-[9px] top-1.5 w-4 h-4 rounded-full bg-accentRed border-4 border-deepGreen group-hover:scale-125 transition-transform"></div>
+                    <div class="sm:absolute sm:-left-32 sm:top-1 sm:text-right sm:w-24 text-accentRed font-serif font-bold text-lg">1991 - 1998</div>
+                    <div class="bg-retroCard/10 border border-retroCard/20 p-6 rounded-lg backdrop-blur-sm">
+                        <h3 class="font-serif text-xl font-bold text-retroBg mb-2">廢除懲治叛亂條例與立法補償</h3>
+                        <p class="text-retroCard/80 text-sm leading-relaxed">
+                            1991年廢止《懲治叛亂條例》與修正刑法第一百條；1998年立法院通過《戒嚴時期不當叛亂暨匪諜審判案件補償條例》，正式展開國家平反。
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. 地圖與不義遺址 (Unjust Sites / Map) -->
+    <section id="map-sites" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-accentRed font-semibold tracking-widest text-sm uppercase block mb-2">Historical Sites</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-darkGreen mb-4">不義遺址與人權記憶點</h2>
+            <div class="w-16 h-1 bg-accentRed mx-auto mb-6"></div>
+            <p class="text-textMuted text-base sm:text-lg">
+                白色恐怖時期留下許多進行審判、偵訊與關押政治犯的場域，如今這些空間被轉化為不義遺址，承載歷史記憶與人權教育。
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- 遺址 1 -->
+            <div class="bg-retroCard/60 border border-darkGreen/10 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all">
+                <div class="h-48 bg-darkGreen relative flex items-center justify-center text-retroBg">
+                    <i class="fa-solid fa-landmark text-4xl text-accentRed"></i>
+                    <span class="absolute bottom-3 left-3 bg-deepGreen text-xs px-3 py-1 rounded text-retroCard">新北市新店區</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-serif text-xl font-bold text-darkGreen mb-2">景美看守所（現白色恐怖景美紀念園區）</h3>
+                    <p class="text-textMuted text-sm leading-relaxed mb-4">
+                        曾為台灣警備總司令部軍事法庭與看守所所在地，美麗島事件大審及多起重大政治案件皆在此進行審理與羈押。
+                    </p>
+                    <span class="inline-block text-xs font-semibold text-accentRed bg-accentRed/10 px-2.5 py-1 rounded">軍事法庭審判地</span>
+                </div>
+            </div>
+
+            <!-- 遺址 2 -->
+            <div class="bg-retroCard/60 border border-darkGreen/10 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all">
+                <div class="h-48 bg-darkGreen relative flex items-center justify-center text-retroBg">
+                    <i class="fa-solid fa-water text-4xl text-accentRed"></i>
+                    <span class="absolute bottom-3 left-3 bg-deepGreen text-xs px-3 py-1 rounded text-retroCard">臺東縣綠島鄉</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-serif text-xl font-bold text-darkGreen mb-2">綠島人權紀念園區（新生訓導處）</h3>
+                    <p class="text-textMuted text-sm leading-relaxed mb-4">
+                        孤懸海上的火燒島，是白色恐怖時期關押政治犯最著名的外海監獄。無數知識分子與異議人士在此度過數年甚至數十年的苦牢。
+                    </p>
+                    <span class="inline-block text-xs font-semibold text-accentRed bg-accentRed/10 px-2.5 py-1 rounded">政治犯關押與勞改營</span>
+                </div>
+            </div>
+
+            <!-- 遺址 3 -->
+            <div class="bg-retroCard/60 border border-darkGreen/10 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-all">
+                <div class="h-48 bg-darkGreen relative flex items-center justify-center text-retroBg">
+                    <i class="fa-solid fa-shield-halved text-4xl text-accentRed"></i>
+                    <span class="absolute bottom-3 left-3 bg-deepGreen text-xs px-3 py-1 rounded text-retroCard">臺北市中正區</span>
+                </div>
+                <div class="p-6">
+                    <h3 class="font-serif text-xl font-bold text-darkGreen mb-2">臺灣省警備總司令部（現臺北市刑警大隊周邊）</h3>
+                    <p class="text-textMuted text-sm leading-relaxed mb-4">
+                        當年情報治安機關的核心樞紐，負責全臺情治監控、逮捕、審訊與移送軍法審判，是白色恐怖權力機制的象徵。
+                    </p>
+                    <span class="inline-block text-xs font-semibold text-accentRed bg-accentRed/10 px-2.5 py-1 rounded">情治特務總部</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8. 結語與平反 (Epilogue & Rehabilitation) -->
+    <section id="epilogue" class="py-24 bg-retroCard/50 border-y border-darkGreen/10 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-4xl mx-auto text-center">
+            <span class="text-accentRed font-semibold tracking-widest text-sm uppercase block mb-2">Epilogue & Reflection</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-darkGreen mb-6">歷史記憶與民主反思</h2>
+            <div class="w-16 h-1 bg-accentRed mx-auto mb-8"></div>
+            <p class="text-textDark/80 text-base sm:text-lg leading-relaxed mb-8 text-left sm:text-center">
+                歷史不能遺忘，真相需要釐清。透過1998年通過的《戒嚴時期不當叛亂暨匪諜審判案件補償條例》，國家開始對受難者進行名譽回復與金錢補償。而現今由國家人權博物館等機構持續推動不義遺址調查、口述歷史及人權教育，提醒著每一位當代公民：<strong>自由與民主絕非理所當然，而是歷經無數前人血淚換來的珍貴資產。</strong>
+            </p>
+            <div class="inline-flex items-center space-x-3 bg-darkGreen text-retroBg px-6 py-3 rounded-lg shadow">
+                <i class="fa-solid fa-dove text-accentRed text-xl"></i>
+                <span class="font-serif tracking-wide font-medium">「人權、民主、法治，是守護臺灣未來的最佳防線。」</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- 9. 延伸閱讀 (Further Reading) -->
+    <section id="reading" class="py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+        <div class="text-center max-w-3xl mx-auto mb-16">
+            <span class="text-accentRed font-semibold tracking-widest text-sm uppercase block mb-2">Further Reading</span>
+            <h2 class="font-serif text-3xl sm:text-4xl font-bold text-darkGreen mb-4">延伸閱讀與官方資源</h2>
+            <div class="w-16 h-1 bg-accentRed mx-auto mb-6"></div>
+            <p class="text-textMuted text-base sm:text-lg">
+                若您想進一步深入了解這段歷史，推薦參考以下權威書籍、官方紀念館與人權教育平台：
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <a href="https://www.nhrm.gov.tw/" target="_blank" rel="noopener noreferrer" class="bg-retroCard/60 border border-darkGreen/10 p-6 rounded-lg hover:border-accentRed transition-all group block">
+                <div class="text-accentRed text-2xl mb-3"><i class="fa-solid fa-building-columns"></i></div>
+                <h3 class="font-serif text-lg font-bold text-darkGreen mb-2 group-hover:text-accentRed transition-colors">國家人權博物館</h3>
+                <p class="text-textMuted text-sm">景美與綠島人權園區官方網站，提供豐富的歷史檔案、受難者口述歷史與展覽資訊。</p>
+            </a>
+            <div class="bg-retroCard/60 border border-darkGreen/10 p-6 rounded-lg">
+                <div class="text-accentRed text-2xl mb-3"><i class="fa-solid fa-book"></i></div>
+                <h3 class="font-serif text-lg font-bold text-darkGreen mb-2">《無法送達的遺書》</h3>
+                <p class="text-textMuted text-sm">國家人權博物館出版，記錄白色恐怖時期受難者在臨刑前留給親人的最後遺書與背後故事。</p>
+            </div>
+            <div class="bg-retroCard/60 border border-darkGreen/10 p-6 rounded-lg">
+                <div class="text-accentRed text-2xl mb-3"><i class="fa-solid fa-film"></i></div>
+                <h3 class="font-serif text-lg font-bold text-darkGreen mb-2">《返校 Detention》</h3>
+                <p class="text-textMuted text-sm">以白色恐怖戒嚴時期校園為背景的知名電玩與電影作品，深刻描繪當時的禁忌氛圍與告密文化。</p>
+            </div>
+            <div class="bg-retroCard/60 border border-darkGreen/10 p-6 rounded-lg">
+                <div class="text-accentRed text-2xl mb-3"><i class="fa-solid fa-file-lines"></i></div>
+                <h3 class="font-serif text-lg font-bold text-darkGreen mb-2">促進轉型正義委員會報告</h3>
+                <p class="text-textMuted text-sm">促轉會解密並調查威權統治時期加害體制、司法不法與不義遺址的官方總結調查報告。</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 頁尾 (Footer) -->
+    <footer class="bg-deepGreen text-retroBg py-12 px-4 sm:px-6 lg:px-8 border-t border-retroCard/10 text-center">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center justify-center space-x-3 mb-4">
+                <div class="w-8 h-8 rounded bg-accentRed flex items-center justify-center text-white font-serif font-bold text-sm">
+                    臺
+                </div>
+                <span class="font-serif text-lg font-bold tracking-wider">歷史的迴響：臺灣白色恐怖時期</span>
+            </div>
+            <p class="text-retroCard/60 text-sm max-w-md mx-auto mb-6">
+                記取歷史教訓，珍惜民主自由。本網站旨在推廣人權教育與歷史反思。
+            </p>
+            <p class="text-xs text-retroCard/40">
+                &copy; 2026 臺灣白色恐怖時期歷史文化專題. All Rights Reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- 人物詳情互動彈跳視窗 (Modal) -->
+    <div id="figure-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300 px-4">
+        <div id="modal-content" class="bg-retroBg border border-darkGreen/20 rounded-xl max-w-lg w-full p-6 sm:p-8 relative shadow-2xl transform scale-95 transition-transform duration-300">
+            <button onclick="closeFigureModal()" class="absolute top-4 right-4 text-textDark/60 hover:text-accentRed text-xl w-10 h-10 flex items-center justify-center rounded-full hover:bg-retroCard transition-colors">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="flex items-center space-x-4 mb-6">
+                <div id="modal-avatar" class="w-16 h-16 rounded-full bg-darkGreen text-retroBg flex items-center justify-center font-serif text-2xl font-bold shadow">
+                    臺
+                </div>
+                <div>
+                    <h3 id="modal-title" class="font-serif text-2xl font-bold text-darkGreen">人物姓名</h3>
+                    <p id="modal-subtitle" class="text-accentRed text-xs font-semibold uppercase tracking-wider">身分標籤</p>
+                </div>
+            </div>
+            <div class="border-t border-darkGreen/10 pt-4 mb-6">
+                <p id="modal-desc" class="text-textDark/90 text-sm sm:text-base leading-relaxed">
+                    人物詳細生平描述...
+                </p>
+            </div>
+            <div class="text-right">
+                <button onclick="closeFigureModal()" class="px-6 py-2.5 bg-darkGreen hover:bg-accentRed text-retroBg rounded text-sm font-medium transition-colors">
+                    關閉視窗
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript 互動與 Anime.js 動畫 -->
+    <script>
+        // 手機版選單切換
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 人物 Modal 互動邏輯
+        function openFigureModal(name, subtitle, desc, imgUrl) {
+            document.getElementById('modal-title').innerText = name;
+            document.getElementById('modal-subtitle').innerText = subtitle;
+            document.getElementById('modal-desc').innerText = desc;
+            document.getElementById('modal-avatar').innerText = name.charAt(0);
+            
+            const modal = document.getElementById('figure-modal');
+            const content = document.getElementById('modal-content');
+            
+            modal.classList.remove('hidden');
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                content.classList.remove('scale-95');
+                content.classList.add('scale-100');
+            }, 10);
+        }
+
+        function closeFigureModal() {
+            const modal = document.getElementById('figure-modal');
+            const content = document.getElementById('modal-content');
+            
+            modal.classList.add('opacity-0');
+            content.classList.remove('scale-100');
+            content.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
+
+        // 點擊 Modal 外部關閉
+        document.getElementById('figure-modal').addEventListener('click', (e) => {
+            if (e.target.id === 'figure-modal') {
+                closeFigureModal();
+            }
+        });
+
+        // Anime.js 捲動與進場動畫
+        document.addEventListener('DOMContentLoaded', () => {
+            // 首頁進場動畫
+            anime.timeline({
+                easing: 'easeOutExpo'
+            })
+            .add({
+                targets: '.hero-content > *',
+                translateY: [40, 0],
+                opacity: [0, 1],
+                delay: anime.stagger(150),
+                duration: 1000
+            });
+
+            // 區塊標題淡入捲動觀察器
+            const observerOptions = {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        anime({
+                            targets: entry.target,
+                            translateY: [30, 0],
+                            opacity: [0, 1],
+                            duration: 800,
+                            easing: 'easeOutQuad'
+                        });
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // 觀察各個主要區塊與卡片
+            document.querySelectorAll('#background .grid > div, #origins .grid > div, .figure-card, .timeline-item, #map-sites .grid > div, #reading .grid > div').forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
